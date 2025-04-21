@@ -2,7 +2,7 @@ import { randomIntFromRange, randomColor, randomFloatFromRange } from './utiliti
 const canvas = document.querySelector("canvas");
 const c = canvas.getContext("2d");
 const texts = document.querySelectorAll("h1, p");
-const fireworkSound = new Audio("./audio/fireworks-sound-final.mp3");
+const fireworkSound = new Audio("./audio/fireworks-sound.wav");
 
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
@@ -190,9 +190,5 @@ addEventListener("click", (e) => {
   createParticles();
   
 });
-
-setTimeout(() => {
-  texts.forEach(text => text.classList.remove("hidden"));
-}, 30000);
 
 createStars();
