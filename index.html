@@ -15,6 +15,7 @@
     
     body {
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
       height: 100vh;
@@ -28,16 +29,19 @@
       z-index: -1;
     }
 
-    h1 {
+    h1, p {
       color: white;
+      margin-bottom: 10px;
     }
 
     .hidden {
       opacity: 0;
+      pointer-events: none;
     }
   </style>
   <body>
     <h1>Click to see fireworks...</h1>
+    <p>Volume up...</p>
     <canvas></canvas>
     <script type="module" src="./fireworks.js"></script>
   </body>
