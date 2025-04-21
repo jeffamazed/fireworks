@@ -50,7 +50,7 @@ class Particle {
     this.color = color;
     this.velocity = velocity;
     this.alpha = 1; 
-    this.alphaDecrement = randomFloatFromRange(0.003, 0.004);
+    this.alphaDecrement = randomFloatFromRange(0.005, 0.008);
   }
 
   update() {
