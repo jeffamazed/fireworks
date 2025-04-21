@@ -1,7 +1,8 @@
 import { randomIntFromRange, randomColor, randomFloatFromRange } from './utilities.js';
 const canvas = document.querySelector("canvas");
 const c = canvas.getContext("2d");
-const h1 = document.querySelector("h1");
+const texts = document.querySelectorAll("h1, p");
+const fireworkSound = new Audio("./audio/fireworks-sound-final.mp3");
 
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
@@ -33,7 +34,7 @@ window.addEventListener("resize", () => {
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
 
-  animate();
+  createStars();
 });
 
 // Objects
@@ -84,7 +85,7 @@ class Star {
     this.color = color
     this.alpha = 1;
     this.fadingOut = true;
-    this.alphaDecrement = randomFloatFromRange(0.001, 0.002);
+    this.alphaDecrement = randomFloatFromRange(0.001, 0.005);
   }
 
   update() {
@@ -123,7 +124,9 @@ let particles = [];
 let stars = [];
 
 function createStars() {
-  for(let i = 0; i < 200; i++) {
+  stars = [];
+  const starCount = canvas.width < 768 ? 100 : 200;
+  for(let i = 0; i < starCount; i++) {
     const x = Math.random() * canvas.width;
     const y = Math.random() * canvas.height;
 
@@ -131,7 +134,7 @@ function createStars() {
       new Star(
         x,
         y,
-        0.1,
+        randomFloatFromRange(0.1, 1),
         "white"
       )
     );
@@ -156,7 +159,8 @@ function animate() {
 animate();
 
 addEventListener("click", (e) => {
-  h1.classList.add("hidden");
+  texts.forEach(text => text.classList.add("hidden"));
+  fireworkSound.play();
 
   mouse.x = e.clientX;
   mouse.y = e.clientY;
@@ -183,7 +187,7 @@ addEventListener("click", (e) => {
 });
 
 setTimeout(() => {
-  h1.classList.remove("hidden");
+  texts.forEach(text => text.classList.remove("hidden"));
 }, 30000);
 
 createStars();
