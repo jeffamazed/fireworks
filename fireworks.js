@@ -141,6 +141,28 @@ function createStars() {
   }
 }
 
+function createParticles() {
+  const particleCount = 800;
+  const angleIncrement = (Math.PI * 2) / particleCount;
+  const power = 15;
+  
+  for (let i = 0; i < particleCount; i++) {
+    const color = randomColor(fireworkColors);
+    particles.push(
+      new Particle(
+        mouse.x,
+        mouse.y,
+        randomFloatFromRange(1, 2),
+        color,
+        {
+          x: Math.cos(angleIncrement * i) * Math.random() * power,
+          y: Math.sin(angleIncrement * i) * Math.random() * power
+        }
+      )
+    );
+  }
+}
+
 // Animation 
 function animate() {
   window.requestAnimationFrame(animate);
@@ -165,25 +187,8 @@ addEventListener("click", (e) => {
   mouse.x = e.clientX;
   mouse.y = e.clientY;
   
-  const particleCount = 800;
-  const angleIncrement = (Math.PI * 2) / particleCount;
-  const power = 15;
+  createParticles();
   
-  for (let i = 0; i < particleCount; i++) {
-    const color = randomColor(fireworkColors);
-    particles.push(
-      new Particle(
-        mouse.x,
-        mouse.y,
-        randomFloatFromRange(1, 2),
-        color,
-        {
-          x: Math.cos(angleIncrement * i) * Math.random() * power,
-          y: Math.sin(angleIncrement * i) * Math.random() * power
-        }
-      )
-    );
-  }
 });
 
 setTimeout(() => {
