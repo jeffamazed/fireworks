@@ -12,12 +12,32 @@
       border: 0;
       box-sizing: border-box;
     }
+    
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    }
 
     canvas {
       display: block;
+      position: absolute;
+      top: 0;
+      z-index: -1;
+    }
+
+    h1 {
+      color: white;
+    }
+
+    .hidden {
+      opacity: 0;
     }
   </style>
   <body>
+    <h1>Click to see fireworks...</h1>
     <canvas></canvas>
     <script type="module" src="./fireworks.js"></script>
   </body>
