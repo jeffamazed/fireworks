@@ -2,7 +2,7 @@ import { randomIntFromRange, randomColor, randomFloatFromRange } from './utiliti
 const canvas = document.querySelector("canvas");
 const c = canvas.getContext("2d");
 const texts = document.querySelectorAll("h1, p");
-const fireworkSound = new Audio("./audio/fireworks-sound.wav");
+const fireworkSound = new Audio("./audio/fireworks-sound.mp3");
 
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
