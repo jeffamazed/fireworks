@@ -1,6 +1,7 @@
 import { randomIntFromRange, randomColor, randomFloatFromRange } from './utilities.js';
 const canvas = document.querySelector("canvas");
 const c = canvas.getContext("2d");
+const h1 = document.querySelector("h1");
 
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
@@ -155,6 +156,8 @@ function animate() {
 animate();
 
 addEventListener("click", (e) => {
+  h1.classList.add("hidden");
+
   mouse.x = e.clientX;
   mouse.y = e.clientY;
   
@@ -178,5 +181,9 @@ addEventListener("click", (e) => {
     );
   }
 });
+
+setTimeout(() => {
+  h1.classList.remove("hidden");
+}, 30000);
 
 createStars();
