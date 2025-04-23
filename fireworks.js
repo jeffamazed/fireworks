@@ -182,7 +182,8 @@ animate();
 
 addEventListener("click", (e) => {
   texts.forEach(text => text.classList.add("hidden"));
-  fireworkSound.play();
+  const sound = fireworkSound.cloneNode();
+  sound.play();
 
   mouse.x = e.clientX;
   mouse.y = e.clientY;
